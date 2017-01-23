@@ -3,24 +3,24 @@
     {
       "intent": "GUESS",
       "slots": [
-          {
-              "name": "person",
-              "type": "AMAZON.Person"
-          }
+        {
+          "name": "person",
+          "type": "AMAZON.Person"
+        }
       ]
     },
     {
       "intent": "CLUE",
       "slots": [
-          {
-              "name": "clue_number",
-              "type": "AMAZON.NUMBER"
-          }
+        {
+          "name": "clue_number",
+          "type": "AMAZON.NUMBER"
+        }
       ]
     },
     {
       "intent": "REPEAT"
-    },    
+    },
     {
       "intent": "REPEATALL"
     },

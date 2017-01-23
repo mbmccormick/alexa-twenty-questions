@@ -9,7 +9,7 @@ var states = {
     GAMEOVERMODE: "_GAMEOVERMODE"
 };
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
     alexa = Alexa.handler(event, context);
     alexa.appId = "amzn1.ask.skill.1e0180c4-424d-498d-83f1-f952b1cb77e8";
     alexa.dynamoDBTableName = "TwentyQuestions";
@@ -23,47 +23,47 @@ var database;
 var card;
 
 var newSessionHandler = {
-    "LaunchRequest": function() {
+    "LaunchRequest": function () {
         this.handler.state = states.NEWGAMEMODE;
 
         this.emitWithState("LaunchRequest");
     },
-    "Unhandled": function() {
+    "Unhandled": function () {
         this.emit(":tell", "Sorry, an error has occurred.");
     }
 };
 
 var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
-    "LaunchRequest": function() {
+    "LaunchRequest": function () {
         this.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
-    "AMAZON.YesIntent": function() {
+    "AMAZON.YesIntent": function () {
         this.handler.state = states.GAMEPLAYMODE;
         this.emit(":saveState", true);
 
         this.emitWithState("LaunchRequest");
     },
-    "AMAZON.NoIntent": function() {
+    "AMAZON.NoIntent": function () {
         this.emitWithState("SessionEndedRequest");
     },
-    "AMAZON.HelpIntent": function() {
+    "AMAZON.HelpIntent": function () {
         this.emitWithState("Unhandled");
     },
-    "AMAZON.StopIntent": function() {
+    "AMAZON.StopIntent": function () {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
         this.emit(":tell", "OK, come back soon.");
     },
-    "Unhandled": function() {
+    "Unhandled": function () {
         this.emit(":ask", "You can say yes to begin the game or no to quit.", "You can say yes to begin the game or no to quit.");
     }
 });
 
 var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
-    "LaunchRequest": function() {
+    "LaunchRequest": function () {
         // TODO: passing this.attributes should be unnecessary, but it does not seem to be accessible as alexa.attributes
-        downloadDatabase(this.attributes, function(attributes, size) {
+        downloadDatabase(this.attributes, function (attributes, size) {
             var index = getRandomNumber(1, size);
             card = database[index - 1];
 
@@ -75,14 +75,14 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
             alexa.emit(":ask", "OK, let's begin. This card is a " + card.type + ". Take your first guess.", "Please take your first guess.");
         });
     },
-    "GUESS": function() {
+    "GUESS": function () {
         var guess = this.event.request.intent.slots.person.value;
 
         this.attributes["GUESS_COUNT"] += 1;
         var count = this.attributes["GUESS_COUNT"];
 
         var isCorrect = false;
-        card.answers.forEach(function(value) {
+        card.answers.forEach(function (value) {
             if (guess.toLowerCase() == value.toLowerCase()) {
                 isCorrect = true;
             }
@@ -98,14 +98,14 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
             this.emit(":ask", "Nope, that's not it. Choose a clue number between 1 and 20 to continue.", "Please choose a clue number between 1 and 20.");
         }
     },
-    "CLUE": function() {
+    "CLUE": function () {
         var clue_number = this.event.request.intent.slots.clue_number.value;
 
         // check to make sure this is a valid clue number
         if (clue_number >= 1 && clue_number <= 20) {
             // check to see if we have already read this clue
             var isRead = false;
-            this.attributes["READ_CLUES"].forEach(function(value) {
+            this.attributes["READ_CLUES"].forEach(function (value) {
                 if (clue_number == value) {
                     isRead = true;
                 }
@@ -123,57 +123,57 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
             this.emit(":ask", "Sorry, please choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
         }
     },
-    "REPEAT": function() {
+    "REPEAT": function () {
         var clue_number = this.attributes["CURRENT_CLUE"];
 
         this.emit(":ask", "Your last clue was: " + card.clues[clue_number - 1] + " Take your guess.", "Please take your guess.");
     },
-    "REPEATALL": function() {
+    "REPEATALL": function () {
         var message = "";
 
-        this.attributes["READ_CLUES"].forEach(function(value) {
+        this.attributes["READ_CLUES"].forEach(function (value) {
             message += "Clue number " + value + ": " + card.clues[value - 1] + " ";
         });
 
         this.emit(":ask", message + "Take your guess.", "Please take your guess.");
     },
-    "AMAZON.HelpIntent": function() {
+    "AMAZON.HelpIntent": function () {
         this.emitWithState("Unhandled");
     },
-    "AMAZON.StopIntent": function() {
+    "AMAZON.StopIntent": function () {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
         this.emit(":tell", "OK, come back soon.");
     },
-    "Unhandled": function() {
+    "Unhandled": function () {
         this.emit(":ask", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.");
     }
 });
 
 var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
-    "LaunchRequest": function() {
+    "LaunchRequest": function () {
         this.emit(":ask", "Would you like to play again?", "Would you like to start a new game?");
     },
-    "AMAZON.YesIntent": function() {
+    "AMAZON.YesIntent": function () {
         this.handler.state = states.GAMEPLAYMODE;
         this.emit(":saveState", true);
 
         this.emitWithState("LaunchRequest");
     },
-    "AMAZON.NoIntent": function() {
+    "AMAZON.NoIntent": function () {
         this.emit(":tell", "OK, come back soon.");
     },
-    "AMAZON.HelpIntent": function() {
+    "AMAZON.HelpIntent": function () {
         this.emitWithState("Unhandled");
     },
-    "AMAZON.StopIntent": function() {
+    "AMAZON.StopIntent": function () {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
         this.emit(":tell", "OK, come back soon.");
     },
-    "Unhandled": function() {
+    "Unhandled": function () {
         this.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
     }
 });
