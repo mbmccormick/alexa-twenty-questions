@@ -1,0 +1,40 @@
+{
+  "intents": [
+    {
+      "intent": "GUESS",
+      "slots": [
+          {
+              "name": "person",
+              "type": "AMAZON.Person"
+          }
+      ]
+    },
+    {
+      "intent": "CLUE",
+      "slots": [
+          {
+              "name": "clue_number",
+              "type": "AMAZON.NUMBER"
+          }
+      ]
+    },
+    {
+      "intent": "REPEAT"
+    },    
+    {
+      "intent": "REPEATALL"
+    },
+    {
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}

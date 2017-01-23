@@ -1,0 +1,14 @@
+GUESS {person}
+
+CLUE clue number {clue_number}
+CLUE clue {clue_number}
+CLUE number {clue_number}
+CLUE {clue_number}
+
+REPEAT can you repeat that
+REPEAT repeat that
+REPEAT repeat
+
+REPEATALL can you read all my clues
+REPEATALL read all my clues
+REPEATALL read all clues

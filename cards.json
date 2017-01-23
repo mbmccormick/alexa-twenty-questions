@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "type": "person",
+        "answers": [
+            "Benjamin Franklin",
+            "Ben Franklin"
+        ],
+        "clues": [
+            "I am old.",
+            "I have grey hair.",
+            "I invented electricity."
+        ]
+    },
+    {
+        "id": 2,
+        "type": "person",
+        "answers": [
+            "Donald John Trump",
+            "Donald J. Trump",
+            "Donlad Jay Trump",
+            "Donald Trump",
+            "Trump"
+        ],
+        "clues": [
+            "I am the 45th president of the United States.",
+            "I am known for my weird hair.",
+            "I am a business mogul."
+        ]
+    }
+]

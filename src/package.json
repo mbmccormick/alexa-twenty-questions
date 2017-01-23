@@ -1,0 +1,20 @@
+{
+  "name": "alexa-twenty-questions",
+  "version": "1.0.0",
+  "description": "A twenty questions trivia game skill.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "twenty",
+    "questions",
+    "trivia"
+  ],
+  "author": "Matt McCormick",
+  "dependencies": {
+    "alexa-sdk": "^1.0.6"
+  }
+}
