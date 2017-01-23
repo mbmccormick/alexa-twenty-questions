@@ -1,19 +1,22 @@
 {
   "intents": [
     {
-      "intent": "GUESS",
-      "slots": [
-        {
-          "name": "guess_string",
-          "type": "string"
-        }
-      ]
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
     },
     {
       "intent": "CLUE",
       "slots": [
         {
-          "name": "clue_number",
+          "name": "number",
           "type": "AMAZON.NUMBER"
         }
       ]
@@ -25,16 +28,17 @@
       "intent": "REPEATALL"
     },
     {
-      "intent": "AMAZON.YesIntent"
-    },
-    {
-      "intent": "AMAZON.NoIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
+      "intent": "GUESS",
+      "slots": [
+        {
+          "name": "person",
+          "type": "AMAZON.Person"
+        },
+        {
+          "name": "year",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+        }
+      ]
     }
   ]
 }
