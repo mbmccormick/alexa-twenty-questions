@@ -25,8 +25,11 @@ var card;
 var newSessionHandler = {
     "LaunchRequest": function () {
         this.handler.state = states.NEWGAMEMODE;
+        this.emit(":saveState", true);
 
-        this.emitWithState("LaunchRequest");
+        downloadDatabase(function (size) {
+            alexa.emitWithState("LaunchRequest");
+        });
     },
     "Unhandled": function () {
         this.emit(":tell", "Sorry, an error has occurred.");
@@ -35,6 +38,11 @@ var newSessionHandler = {
 
 var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
     "LaunchRequest": function () {
+        this.attributes["CARD_ID"] = null;
+        this.attributes["GUESS_COUNT"] = 0;
+        this.attributes["READ_CLUES"] = [];
+        this.attributes["CURRENT_CLUE"] = null;
+
         this.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
     "AMAZON.YesIntent": function () {
@@ -53,6 +61,9 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
+        this.handler.state = states.NEWGAMEMODE;
+        this.emit(":saveState", true);
+
         this.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
@@ -62,24 +73,17 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
 
 var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
     "LaunchRequest": function () {
-        // TODO: passing this.attributes should be unnecessary, but it does not seem to be accessible as alexa.attributes
-        downloadDatabase(this.attributes, function (attributes, size) {
-            var index = getRandomNumber(1, size);
-            card = database[index - 1];
+        var index = getRandomNumber(1, database.length);
+        
+        card = database[index - 1];
+        this.attributes["CARD_ID"] = card.id;
 
-            attributes["CARD_ID"] = card.id;
-            attributes["GUESS_COUNT"] = 0;
-            attributes["READ_CLUES"] = [];
-            attributes["CURRENT_CLUE"] = null;
-
-            alexa.emit(":ask", "OK, let's begin. This card is a " + card.type + ". Take your first guess.", "Please take your first guess.");
-        });
+        this.emit(":ask", "OK, let's begin. This card is a " + card.type + ". Take your first guess.", "Please take your first guess.");
     },
     "GUESS": function () {
         var guess = this.event.request.intent.slots.person.value;
 
         this.attributes["GUESS_COUNT"] += 1;
-        var count = this.attributes["GUESS_COUNT"];
 
         var isCorrect = false;
         card.answers.forEach(function (value) {
@@ -92,8 +96,11 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
             this.handler.state = states.GAMEOVERMODE;
             this.emit(":saveState", true);
 
-            // TODO: handle plural guess vs. guesses
-            this.emit(":ask", "Congratulations! You got it right in " + count + " guesses! Would you like to play again?", "Would you like to start a new game?");
+            if (this.attributes["GUESS_COUNT"] == 1) {
+                this.emit(":ask", "Congratulations! You got it right on the first guess. Would you like to play again?", "Would you like to start a new game?");
+            } else {
+                this.emit(":ask", "Congratulations! You got it right in " + this.attributes["GUESS_COUNT"] + " guesses. Would you like to play again?", "Would you like to start a new game?");
+            }
         } else {
             this.emit(":ask", "Nope, that's not it. Choose a clue number between 1 and 20 to continue.", "Please choose a clue number between 1 and 20.");
         }
@@ -101,9 +108,7 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
     "CLUE": function () {
         var clue_number = this.event.request.intent.slots.clue_number.value;
 
-        // check to make sure this is a valid clue number
         if (clue_number >= 1 && clue_number <= 20) {
-            // check to see if we have already read this clue
             var isRead = false;
             this.attributes["READ_CLUES"].forEach(function (value) {
                 if (clue_number == value) {
@@ -115,7 +120,7 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
                 this.attributes["READ_CLUES"].push(clue_number);
                 this.attributes["CURRENT_CLUE"] = clue_number;
 
-                this.emit(":ask", card.clues[clue_number - 1] + " Take your next guess.", "Please take your next guess.");
+                this.emit(":ask", card.clues[clue_number - 1] + " Take your guess.", "Please take your guess.");
             } else {
                 this.emit(":ask", "You've already had this clue. Please choose a different clue number.", "Please choose a clue number between 1 and 20.");
             }
@@ -124,9 +129,7 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
         }
     },
     "REPEAT": function () {
-        var clue_number = this.attributes["CURRENT_CLUE"];
-
-        this.emit(":ask", "Your last clue was: " + card.clues[clue_number - 1] + " Take your guess.", "Please take your guess.");
+        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
     },
     "REPEATALL": function () {
         var message = "";
@@ -144,6 +147,9 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
+        this.handler.state = states.NEWGAMEMODE;
+        this.emit(":saveState", true);
+
         this.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
@@ -162,7 +168,7 @@ var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
         this.emitWithState("LaunchRequest");
     },
     "AMAZON.NoIntent": function () {
-        this.emit(":tell", "OK, come back soon.");
+        this.emitWithState("SessionEndedRequest");
     },
     "AMAZON.HelpIntent": function () {
         this.emitWithState("Unhandled");
@@ -171,6 +177,9 @@ var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
+        this.handler.state = states.NEWGAMEMODE;
+        this.emit(":saveState", true);
+
         this.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
@@ -178,11 +187,11 @@ var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
     }
 });
 
-function downloadDatabase(attributes, callback) {
+function downloadDatabase(callback) {
     request(databaseLocation, function (err, res, body) {
         database = JSON.parse(body);
 
-        callback(attributes, database.length);
+        callback();
     });
 }
 
