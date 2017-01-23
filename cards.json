@@ -27,5 +27,34 @@
             "I am known for my weird hair.",
             "I am a business mogul."
         ]
+    },
+    {
+        "id": 3,
+        "type": "thing",
+        "answers": [
+            "Coffee"
+        ],
+        "clues": [
+            "I can be weak or strong.",
+            "I am used around the world.",
+            "Sometimes I get creamed.",
+            "I am a popular ice cream flavor.",
+            "Sometimes I'm a real drip.",
+            "Some people want me to take my lumps.",
+            "I can be made in an instant.",
+            "When I'm dark brown, I'm black.",
+            "Lose your turn.",
+            "I'm not beer, but I can be brewed.",
+            "Unlike money, I grow on trees.",
+            "I make people nervous.",
+            "I start life as a bean.",
+            "A cake is named for me.",
+            "I am a type of table.",
+            "Although you don't smoke me, I often need a filter.",
+            "I am a part of a morning ritual.",
+            "One free guess.",
+            "My breaks don't need to be fixed.",
+            "I am mostly water."
+        ]
     }
 ]

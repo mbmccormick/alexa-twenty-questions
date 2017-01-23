@@ -1,4 +1,4 @@
-GUESS {person}
+GUESS {guess_string}
 
 CLUE clue number {clue_number}
 CLUE clue {clue_number}

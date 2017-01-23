@@ -4,8 +4,8 @@
       "intent": "GUESS",
       "slots": [
         {
-          "name": "person",
-          "type": "AMAZON.Person"
+          "name": "guess_string",
+          "type": "string"
         }
       ]
     },

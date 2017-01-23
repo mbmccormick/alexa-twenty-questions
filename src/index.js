@@ -81,7 +81,7 @@ var gamePlayHandler = Alexa.CreateStateHandler(states.GAMEPLAYMODE, {
         this.emit(":ask", "OK, let's begin. This card is a " + card.type + ". Take your first guess.", "Please take your first guess.");
     },
     "GUESS": function () {
-        var guess = this.event.request.intent.slots.person.value;
+        var guess = this.event.request.intent.slots.guess_string.value;
 
         this.attributes["GUESS_COUNT"] += 1;
 
