@@ -23,9 +23,26 @@
             "Trump"
         ],
         "clues": [
-            "I am the 45th president of the United States.",
-            "I am known for my weird hair.",
-            "I am a business mogul."
+            "I was the 45th president of the United States.",
+            "I was born and raised in Queens, New York.",
+            "Move ahead three spaces.",
+            "I am a business mogul.",
+            "I have two ex-wives and five children.",
+            "I am a reality TV host.",
+            "Forbes has named me one of the wealthiest people in the world.",
+            "One of my many job titles includes real estate developer.",
+            "I am a democrat.",
+            "I am male.",
+            "Lose your turn",
+            "My net worth is estimated at 4.5 billion dollars.",
+            "You can find my name on steak and vodka.",
+            "I have a star on the Hollywood Walk of Fame.",
+            "I once hosted the Miss USA pageants.",
+            "I am a Presbyterian.",
+            "I have been inducted into the World Wrestling Entertainment Hall of Fame.",
+            "I have my own board game.",
+            "I have never used an ATM.",
+            "My wife cuts my hair."
         ]
     },
     {
@@ -52,9 +69,39 @@
             "I am a type of table.",
             "Although you don't smoke me, I often need a filter.",
             "I am a part of a morning ritual.",
-            "One free guess.",
+            "Go ahead 3 spaces.",
             "My breaks don't need to be fixed.",
             "I am mostly water."
+        ]
+    },
+    {
+        "id": 4,
+        "type": "person",
+        "answers": [
+            "O. J. Simpson",
+            "Oh Jay Simpson"
+        ],
+        "clues": [
+            "Lose your turn.",
+            "I was raised in San Francisco.",
+            "My middle name is James.",
+            "I spent most of my professional career in New York.",
+            "It was my knees, not the enemy, that betrayed me.",
+            "I held a world record in track.",
+            "I crossed a milestone in the snow.",
+            "In my greatest year I ran over 11 miles.",
+            "One free guess any time.",
+            "I went to college at Southern Cal.",
+            "My entourage was known as \"The Electric Company\".",
+            "I am a sports star.",
+            "I ended my career in San Francisco.",
+            "My number was two to the fifth power.",
+            "I drive like Arnold Palmer.",
+            "My nickname is a good mixer.",
+            "A New York club honored me when I was in college.",
+            "I have had a career on television.",
+            "I am black.",
+            "I am male."
         ]
     }
 ]
