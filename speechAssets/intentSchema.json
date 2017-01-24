@@ -25,7 +25,7 @@
       "intent": "REPEAT"
     },
     {
-      "intent": "REPEATALL"
+      "intent": "READALL"
     },
     {
       "intent": "GUESS",
@@ -39,6 +39,12 @@
           "type": "AMAZON.FOUR_DIGIT_NUMBER"
         }
       ]
+    },
+    {
+      "intent": "WIN"
+    },
+    {
+      "intent": "LOSE"
     }
   ]
 }
