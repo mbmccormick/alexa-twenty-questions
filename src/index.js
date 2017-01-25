@@ -97,9 +97,6 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
                 if (slots[slot].value) {
                     var guess = slots[slot].value;
 
-                    console.log(card.answers);
-                    console.log(guess);
-
                     if (find(card.answers, guess)) {
                         isCorrect = true;
                     }
@@ -133,7 +130,7 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
 
         var message = "";
 
-        for (var clue in this.attributes["READ_CLUES"],sort(sortNumbers)) {
+        for (var clue in this.attributes["READ_CLUES"].sort(sortNumbers)) {
             message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
         }
 
@@ -195,7 +192,7 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
 
         var message = "";
 
-        for (var clue in this.attributes["READ_CLUES"],sort(sortNumbers)) {
+        for (var clue in this.attributes["READ_CLUES"].sort(sortNumbers)) {
             message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
         }
 
