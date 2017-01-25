@@ -39,12 +39,6 @@
           "type": "AMAZON.FOUR_DIGIT_NUMBER"
         }
       ]
-    },
-    {
-      "intent": "WIN"
-    },
-    {
-      "intent": "LOSE"
     }
   ]
 }

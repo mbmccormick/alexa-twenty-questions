@@ -7,14 +7,15 @@ var states = {
     NEWGAMEMODE: "_NEWGAMEMODE",
     GUESSMODE: "_GUESSMODE",
     CLUEMODE: "_CLUEMODE",
-    GAMEOVERMODE: "_GAMEOVERMODE"
+    WINMODE: "_WINMODE",
+    LOSEMODE: "_LOSEMODE"
 };
 
 exports.handler = function (event, context, callback) {
     alexa = Alexa.handler(event, context);
     // alexa.appId = "amzn1.ask.skill.1e0180c4-424d-498d-83f1-f952b1cb77e8";
     // alexa.dynamoDBTableName = "TwentyQuestions";
-    alexa.registerHandlers(newSessionHandler, newGameHandler, guessHandler, clueHandler, gameOverHandler);
+    alexa.registerHandlers(newSessionHandler, newGameHandler, guessHandler, clueHandler, winHandler, loseHandler);
     alexa.execute();
 };
 
@@ -107,18 +108,18 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
         }
 
         if (isCorrect) {
-            this.handler.state = states.GAMEOVERMODE;
+            this.handler.state = states.WINMODE;
 
-            this.emitWithState("WIN");
+            this.emitWithState("LaunchRequest");
         } else {
             if (this.attributes["READ_CLUES"].length < 20) {
                 this.handler.state = states.CLUEMODE;
 
                 this.emit(":ask", "No, that's not it. Choose a clue number between 1 and 20 to continue.", "Please choose a clue number between 1 and 20.");
             } else {
-                this.handler.state = states.GAMEOVERMODE;
+                this.handler.state = states.LOSEMODE;
 
-                this.emitWithState("LOSE");
+                this.emitWithState("LaunchRequest");
             }
         }
     },
@@ -184,6 +185,22 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
             this.emit(":ask", "Sorry, please choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
         }
     },
+    "REPEAT": function () {
+        printDebugInformation(this, "guessHandler:REPEAT");
+
+        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+    },
+    "READALL": function () {
+        printDebugInformation(this, "guessHandler:READALL");
+
+        var message = "";
+
+        for (var clue in this.attributes["READ_CLUES"],sort(sortNumbers)) {
+            message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
+        }
+
+        this.emit(":ask", message + "Take your guess.", "Please take your guess.");
+    },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.HelpIntent");
 
@@ -208,14 +225,9 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
     }
 });
 
-var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
+var winHandler = Alexa.CreateStateHandler(states.WINMODE, {
     "LaunchRequest": function () {
-        printDebugInformation(this, "gameOverHandler:LaunchRequest");
-
-        this.emit(":ask", "Would you like to play again?", "Would you like to start a new game?");
-    },
-    "WIN": function () {
-        printDebugInformation(this, "gameOverHandler:WIN");
+        printDebugInformation(this, "winHandler:LaunchRequest");
 
         this.handler.state = states.NEWGAMEMODE;
 
@@ -227,44 +239,81 @@ var gameOverHandler = Alexa.CreateStateHandler(states.GAMEOVERMODE, {
             this.emit(":ask", "Yes, that's right! I am " + card.answers[0] + ". You scored " + score + " point. Would you like to play again?", "Would you like to start a new game?");
         }
     },
-    "LOSE": function () {
-        printDebugInformation(this, "gameOverHandler:LOSE");
-
-        this.handler.state = states.NEWGAMEMODE;
-
-        this.emit(":ask", "Sorry, that's still not right. Game over. I am " + card.answers[0] + ". Would you like to play again?", "Would you like to start a new game?");
-    },
     "AMAZON.YesIntent": function () {
-        printDebugInformation(this, "gameOverHandler:AMAZON.YesIntent");
+        printDebugInformation(this, "winHandler:AMAZON.YesIntent");
 
         this.handler.state = states.NEWGAMEMODE;
 
         this.emitWithState("LaunchRequest");
     },
     "AMAZON.NoIntent": function () {
-        printDebugInformation(this, "gameOverHandler:AMAZON.NoIntent");
+        printDebugInformation(this, "winHandler:AMAZON.NoIntent");
 
         this.emitWithState("SessionEndedRequest");
     },
     "AMAZON.HelpIntent": function () {
-        printDebugInformation(this, "gameOverHandler:AMAZON.HelpIntent");
+        printDebugInformation(this, "winHandler:AMAZON.HelpIntent");
 
         this.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
-        printDebugInformation(this, "gameOverHandler:AMAZON.StopIntent");
+        printDebugInformation(this, "winHandler:AMAZON.StopIntent");
 
         this.emitWithState("SessionEndedRequest");
     },
     "SessionEndedRequest": function () {
-        printDebugInformation(this, "gameOverHandler:SessionEndedRequest");
+        printDebugInformation(this, "winHandler:SessionEndedRequest");
 
         this.handler.state = null;
 
         this.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
-        printDebugInformation(this, "gameOverHandler:Unhandled");
+        printDebugInformation(this, "winHandler:Unhandled");
+
+        this.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
+    }
+});
+
+var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
+    "LaunchRequest": function () {
+        printDebugInformation(this, "loseHandler:LaunchRequest");
+
+        this.handler.state = states.NEWGAMEMODE;
+
+        this.emit(":ask", "Sorry, that's still not right. Game over. I am " + card.answers[0] + ". Would you like to play again?", "Would you like to start a new game?");
+    },
+    "AMAZON.YesIntent": function () {
+        printDebugInformation(this, "loseHandler:AMAZON.YesIntent");
+
+        this.handler.state = states.NEWGAMEMODE;
+
+        this.emitWithState("LaunchRequest");
+    },
+    "AMAZON.NoIntent": function () {
+        printDebugInformation(this, "loseHandler:AMAZON.NoIntent");
+
+        this.emitWithState("SessionEndedRequest");
+    },
+    "AMAZON.HelpIntent": function () {
+        printDebugInformation(this, "loseHandler:AMAZON.HelpIntent");
+
+        this.emitWithState("Unhandled");
+    },
+    "AMAZON.StopIntent": function () {
+        printDebugInformation(this, "loseHandler:AMAZON.StopIntent");
+
+        this.emitWithState("SessionEndedRequest");
+    },
+    "SessionEndedRequest": function () {
+        printDebugInformation(this, "loseHandler:SessionEndedRequest");
+
+        this.handler.state = null;
+
+        this.emit(":tell", "OK, come back soon.");
+    },
+    "Unhandled": function () {
+        printDebugInformation(this, "loseHandler:Unhandled");
 
         this.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
     }
