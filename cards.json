@@ -103,5 +103,65 @@
             "I am black.",
             "I am male."
         ]
+    },
+    {
+        "id": 5,
+        "type": "person",
+        "answers": [
+            "Aaron Rodgers"
+        ],
+        "clues": [
+            "I was born in 1983.",
+            "I am a sports star.",
+            "Among other schools, I attended Butte Community College.",
+            "I was born in Chico, California.",
+            "I am male.",
+            "I was the Superbowl MVP in 2011.",
+            "I currently hold the title for Best Touchdown to Interception Ratio in NFL history.",
+            "You can find me on TV on Sundays.",
+            "I seriously considered quitting football to become a lawyer.",
+            "I am a quarterback.",
+            "I play for the Green Bay Packers.",
+            "My number is the square root of one hundred forty four.",
+            "My childhood nickname was Hurley.",
+            "I am in many insurance commercials.",
+            "I founded Suspended Sunrise Recordings.",
+            "I have two brothers.",
+            "I once beat an astronaut on Jeopardy.",
+            "Football runs in my family.",
+            "You can often find me wearing green and gold.",
+            "Some people refer to me as a cheese head."
+        ]
+    },
+    {
+        "id": 5,
+        "type": "place",
+        "answers": [
+            "Seattle, Washington",
+            "Seattle, WA",
+            "Seattle"
+        ],
+        "clues": [
+            "I was incorporated in 1869.",
+            "Some people call me Jet City.",
+            "I am known for my coffee.",
+            "Logging was my first major industry in the 19th century.",
+            "I am the home of a major online retailer.",
+            "I am the birthplace of Jimi Hendrix.",
+            "I hosted the 1962 World's Fair.",
+            "I am home to NFL, MLB, and MLS teams, but I don't have an NBA team.",
+            "I was the first city in the United States to play a Beatles song on the radio.",
+            "Despite what most people think, my annual rainfall is less than Houston, Chicago, and New York City.",
+            "I am home to the longest continuously operating farmer's market in the country.",
+            "I am home to the busiest ferry terminal in the country.",
+            "I am located in the Pacific Northwest.",
+            "Starbucks calls me home.",
+            "I succumbed to a great fire in 1889.",
+            "My needle is iconic.",
+            "Tom Hanks and Meg Ryan played in a movie of my namesake.",
+            "An eighteen foot troll lives under one of my bridges.",
+            "I am located in the United States.",
+            "I am located in Washington state."
+        ]
     }
 ]

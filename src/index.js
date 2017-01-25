@@ -127,12 +127,12 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
 
         this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
     },
-    "REPEATALL": function () {
-        printDebugInformation(this, "guessHandler:REPEATALL");
+    "READALL": function () {
+        printDebugInformation(this, "guessHandler:READALL");
 
         var message = "";
 
-        for (var clue in this.attributes["READ_CLUES"]) {
+        for (var clue in this.attributes["READ_CLUES"],sort(sortNumbers)) {
             message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
         }
 
@@ -311,4 +311,8 @@ function find(array, item) {
     }
 
     return false;
+}
+
+function sortNumbers(a,b ) {
+    return a - b;
 }
