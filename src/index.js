@@ -186,12 +186,12 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
         }
     },
     "REPEAT": function () {
-        printDebugInformation(this, "guessHandler:REPEAT");
+        printDebugInformation(this, "clueHandler:REPEAT");
 
-        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
     },
     "READALL": function () {
-        printDebugInformation(this, "guessHandler:READALL");
+        printDebugInformation(this, "clueHandler:READALL");
 
         var message = "";
 
@@ -199,7 +199,7 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
             message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
         }
 
-        this.emit(":ask", message + "Take your guess.", "Please take your guess.");
+        this.emit(":ask", message + "Choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.HelpIntent");
@@ -320,17 +320,19 @@ var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
 });
 
 function printDebugInformation(context, name) {
-    console.log(name);
+    if (process.env.DEBUG) {
+        console.log(name);
 
-    var intent = context.event.request.intent;
+        var intent = context.event.request.intent;
 
-    if (intent) {
-        var slots = intent.slots;
+        if (intent) {
+            var slots = intent.slots;
 
-        for (var slot in slots) {
-            if (slots.hasOwnProperty(slot)) {
-                if (slots[slot].value) {
-                    console.log(slots[slot]);
+            for (var slot in slots) {
+                if (slots.hasOwnProperty(slot)) {
+                    if (slots[slot].value) {
+                        console.log(slots[slot]);
+                    }
                 }
             }
         }
