@@ -3,19 +3,6 @@
         "id": 1,
         "type": "person",
         "answers": [
-            "Benjamin Franklin",
-            "Ben Franklin"
-        ],
-        "clues": [
-            "I am old.",
-            "I have grey hair.",
-            "I invented electricity."
-        ]
-    },
-    {
-        "id": 2,
-        "type": "person",
-        "answers": [
             "Donald Trump",
             "Donald J. Trump",
             "Donlad Jay Trump",
@@ -46,7 +33,7 @@
         ]
     },
     {
-        "id": 3,
+        "id": 2,
         "type": "thing",
         "answers": [
             "Coffee"
@@ -75,7 +62,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 3,
         "type": "person",
         "answers": [
             "O. J. Simpson",
@@ -105,7 +92,7 @@
         ]
     },
     {
-        "id": 5,
+        "id": 4,
         "type": "person",
         "answers": [
             "Aaron Rodgers"
