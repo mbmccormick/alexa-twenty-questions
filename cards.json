@@ -150,5 +150,127 @@
             "I am located in the United States.",
             "I am located in Washington state."
         ]
+    },
+    {
+        "id": 6,
+        "type": "thing",
+        "answers": [
+            "Christmas",
+            "Christmas Day"
+        ],
+        "clues": [
+            "I am a holiday.",
+            "I am often celebrated with lights.",
+            "I became popular in the United States in the 1830s and 40s.",
+            "I am celebrated in the winter in the U.S.A.",
+            "People often think of St. Nicholas when they think of me.",
+            "You may give your loved ones gifts to celebrate me.",
+            "Eggnog is my favorite drink.",
+            "In A.D. 350, Pope Julius I, bishop of Rome, proclaimed December 25 the official celebration.",
+            "Alabama was the first state in the United States to officially recognize me in 1836.",
+            "Purchases for me account for 1/6 of all retail sales in the U.S.",
+            "Lose your turn",
+            "You may find yourself singing 'Rudolph the Red-Nosed Reindeer' around this time.",
+            "I like carols.",
+            "This festival commemorates the birth of Jesus Christ.",
+            "I am commonly observed on December 25.",
+            "Mary and Joseph know me.",
+            "I'm fond of gold, frankincense, and myrrh.",
+            "Deck the halls!",
+            "I like wreaths, garlands, and mistletoe.",
+            "You can never make too many cookies for me!"
+        ]
+    },
+    {
+        "id": 7,
+        "type": "thing",
+        "answers": [
+            "banana",
+            "bananas"
+        ],
+        "clues": [
+            "I am yellow.",
+            "I'm best when ripe.",
+            "Some people use me to show how big other items are.",
+            "I am low in calories.",
+            "I contain the amino acid tryptophan and vitamin B6.",
+            "There are around 1000 different types of my plan around the world today.",
+            "I make good bread and muffins.",
+            "Over 100 billion of me are consumed annually in the world.",
+            "I am technically a berry.",
+            "My scientific name is musa sapientum.",
+            "Lose your turn",
+            "I usually come from countries in Latin America and South America.",
+            "About 75 percent of my weight is water.",
+            "I have a lot of potassium.",
+            "I am not that yummy when I am green.",
+            "I was first introduced to the Americas from West Africa in the 16th century",
+            "About half of all people who are allergic to latex are often also allergic to me.",
+            "I am naturally slightly radioactive, but the level of radiation is not high enough to cause any harm.",
+            "Gwen Stefani sings about me",
+            "I am edible."
+        ]
+    },
+    {
+        "id": 8,
+        "type": "person",
+        "answers": [
+            "Denzel Washington",
+            "Denzel Hayes Washington",
+            "Denzel Hayes Washington, Jr.",
+            "Denzel H. Washington, Jr.",
+            "Denzel H. Washington"
+        ],
+        "clues": [
+            "My middle name is Hayes.",
+            "Junior follows my name.",
+            "I have received three Golden Globe awards.",
+            "I've won two Academy Awards.",
+            "I am 6 feet, 1 inch tall.",
+            "My spouse's name is Pauletta.",
+            "I am male.",
+            "I was born in Mount Vernon, New York",
+            "I have four children.",
+            "I was born on December 28.",
+            "Lose your turn",
+            "I starred in Man on Fire.",
+            "You can call me Creasy.",
+            "I played an airline pilot in 2012.",
+            "I am African-American.",
+            "My first big screen appearance was in Carbon Copy.",
+            "I won an Oscar for Best Actor in a Leading Role in the movie Training Day.",
+            "I received my Bachelor's degree in Journalism from Fordham University in New York City.",
+            "I am the first African-American actor to receive two Academy Awards.",
+            "I frequently work with director Spike Lee."
+        ]
+    },
+    {
+        "id": 9,
+        "type": "place",
+        "answers": [
+            "Antarctica"
+        ],
+        "clues": [
+            "I am Earth's southernmost continent.",
+            "About 98% of me is covered by ice.",
+            "I am a continent.",
+            "You'll need a heavy coat to visit me.",
+            "I contain the South Pole.",
+            "I am the fifth-largest continent.",
+            "I am last region on Earth in recorded history to be discovered and colonised by humans.",
+            "I can get pretty cold.",
+            "I am very windy.",
+            "I am home to 70% of the planet's fresh water.",
+            "Lose your turn",
+            "I have an area of about 5.4 million square miles.",
+            "No one owns me.",
+            "I am the only continent without a time zone..",
+            "I am the driest place on Earth.",
+            "I have no permanent residents.",
+            "I've marched with a few penguins.",
+            "I grow every winter.",
+            "I have an insect in my name.",
+            "My name comes from a Greek word meaning 'opposite to the north'."
+        ]
     }
 ]
