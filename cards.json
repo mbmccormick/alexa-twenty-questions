@@ -272,5 +272,65 @@
             "I have an insect in my name.",
             "My name comes from a Greek word meaning 'opposite to the north'."
         ]
+    },
+        {
+        "id": 10,
+        "type": "thing",
+        "answers": [
+            "salmon"
+        ],
+        "clues": [
+            "I am orange on the inside.",
+            "My relatives are anadromous.",
+            "You can eat me cooked, smoked, or raw.",
+            "I come in many varieties: coho, Atlantic, Sockeye.",
+            "My life begins in freshwater",
+            "I am a fish.",
+            "I am edible.",
+            "I can be found in both the Atlantic and Pacific oceans as well as inland lakes like the Great Lakes.",
+            "There is a city in Idaho named after me.",
+            "I don't like grizzly bears, but grizzly bears love me!",
+            "Lose your turn",
+            "I belong to the genus, Onchorhynchus.",
+            "I have been known to swim upstream.",
+            "I've been known to travel great distances.",
+            "You might see me flying through the air at Pike Place Market in Seattle.",
+            "I swim.",
+            "I've been in existence for over 50 million years.",
+            "I'm common in sushi.",
+            "My nest is called a redd.",
+            "My scales can be different colors, depending on where I live."
+        ]
+    },
+	{
+        "id": 11,
+        "type": "place",
+        "answers": [
+            "Central Park",
+			"Central Park, New York",
+			"Central Park, New York City"
+        ],
+        "clues": [
+            "I am a park.",
+            "Kevin McCallister came to visit me.",
+            "I am 843 acres.",
+            "I opened in November 1858.",
+            "I have been a National Historic Landmark since 1962."
+            "I'm located in New York.",
+            "You can find Jacqueline Kennedy Onassis Reservoir in me.",
+            "The Metropolitan Museum of Art is on my grounds.",
+            "I have a zoo.",
+            "I see around 50 million visitors a year.",
+            "I am a world-class urban park.",
+            "I have 7 bodies of water.",
+            "I have 9000 benches.",
+            "I am located in Manhattan.",
+            "I am nestled between the Upper West Side and Upper East Side.",
+            "You can see Sir Walter Scott, if you come visit me.",
+            "I am home to two indoor restaurants, including Tavern on the Green.",
+            "Some may say, I am central.",
+            "Since I am so large, I have my own app.",
+            "My lampposts tell a secret code, and will help you find your way through me."
+        ]
     }
 ]
