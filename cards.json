@@ -273,7 +273,7 @@
             "My name comes from a Greek word meaning 'opposite to the north'."
         ]
     },
-        {
+    {
         "id": 10,
         "type": "thing",
         "answers": [
@@ -302,20 +302,20 @@
             "My scales can be different colors, depending on where I live."
         ]
     },
-	{
+    {
         "id": 11,
         "type": "place",
         "answers": [
             "Central Park",
-			"Central Park, New York",
-			"Central Park, New York City"
+            "Central Park, New York",
+            "Central Park, New York City"
         ],
         "clues": [
             "I am a park.",
             "Kevin McCallister came to visit me.",
             "I am 843 acres.",
             "I opened in November 1858.",
-            "I have been a National Historic Landmark since 1962."
+            "I have been a National Historic Landmark since 1962.",
             "I'm located in New York.",
             "You can find Jacqueline Kennedy Onassis Reservoir in me.",
             "The Metropolitan Museum of Art is on my grounds.",
