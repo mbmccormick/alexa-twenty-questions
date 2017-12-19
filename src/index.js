@@ -60,8 +60,10 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.NoIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.HelpIntent");
@@ -70,8 +72,10 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.StopIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "newGameHandler:SessionEndedRequest");
@@ -145,8 +149,10 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "guessHandler:AMAZON.StopIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "guessHandler:SessionEndedRequest");
@@ -186,8 +192,10 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.StopIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "clueHandler:SessionEndedRequest");
@@ -226,8 +234,10 @@ var winHandler = Alexa.CreateStateHandler(states.WINMODE, {
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.NoIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.HelpIntent");
@@ -236,8 +246,10 @@ var winHandler = Alexa.CreateStateHandler(states.WINMODE, {
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.StopIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "winHandler:SessionEndedRequest");
@@ -270,8 +282,10 @@ var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.NoIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.HelpIntent");
@@ -280,8 +294,10 @@ var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.StopIntent");
-
-        this.emitWithState("SessionEndedRequest");
+        
+        this.handler.state = "";
+        
+        this.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "loseHandler:SessionEndedRequest");
