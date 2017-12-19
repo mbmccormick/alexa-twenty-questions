@@ -65,6 +65,7 @@
         "id": 3,
         "type": "person",
         "answers": [
+            "OJ Simpson",
             "O. J. Simpson",
             "Oh Jay Simpson"
         ],
@@ -87,7 +88,7 @@
             "My nickname is a good mixer.",
             "A New York club honored me when I was in college.",
             "I have had a career on television.",
-            "I am black.",
+            "I am African American.",
             "I am male."
         ]
     },
