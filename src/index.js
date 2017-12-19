@@ -13,8 +13,8 @@ var states = {
 
 exports.handler = function (event, context, callback) {
     alexa = Alexa.handler(event, context);
-    // alexa.appId = "amzn1.ask.skill.1e0180c4-424d-498d-83f1-f952b1cb77e8";
-    // alexa.dynamoDBTableName = "TwentyQuestions";
+    alexa.appId = "amzn1.ask.skill.1e0180c4-424d-498d-83f1-f952b1cb77e8";
+    alexa.dynamoDBTableName = "TwentyQuestions";
     alexa.registerHandlers(newSessionHandler, newGameHandler, guessHandler, clueHandler, winHandler, loseHandler);
     alexa.execute();
 };
@@ -51,6 +51,8 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
         this.attributes["CARD_ID"] = card.id;
         this.attributes["READ_CLUES"] = [];
         this.attributes["CURRENT_CLUE"] = null;
+
+        printDebugInformation(this, "Randomly selected card " + card.id + " for this game.");
 
         this.handler.state = states.GUESSMODE;
 
