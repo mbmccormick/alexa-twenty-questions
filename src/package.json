@@ -15,7 +15,7 @@
   ],
   "author": "Matt McCormick",
   "dependencies": {
-    "alexa-sdk": "^1.0.6",
-    "request": "^2.79.0"
+    "alexa-sdk": "^1.0.24",
+    "request": "^2.83.0"
   }
 }
