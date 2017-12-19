@@ -30,7 +30,7 @@ var newSessionHandler = {
 
         this.handler.state = states.NEWGAMEMODE;
 
-        downloadDatabase(function (size) {
+        downloadDatabase(function () {
             alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
         });
     },
@@ -76,7 +76,7 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
     "SessionEndedRequest": function () {
         printDebugInformation(this, "newGameHandler:SessionEndedRequest");
 
-        this.handler.state = null;
+        this.handler.state = "";
         
         this.emit(":tell", "OK, come back soon.");
     },
@@ -151,7 +151,7 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
     "SessionEndedRequest": function () {
         printDebugInformation(this, "guessHandler:SessionEndedRequest");
 
-        this.handler.state = null;
+        this.handler.state = "";
 
         this.emit(":tell", "OK, come back soon.");
     },
@@ -192,7 +192,7 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
     "SessionEndedRequest": function () {
         printDebugInformation(this, "clueHandler:SessionEndedRequest");
 
-        this.handler.state = null;
+        this.handler.state = "";
 
         this.emit(":tell", "OK, come back soon.");
     },
@@ -242,7 +242,7 @@ var winHandler = Alexa.CreateStateHandler(states.WINMODE, {
     "SessionEndedRequest": function () {
         printDebugInformation(this, "winHandler:SessionEndedRequest");
 
-        this.handler.state = null;
+        this.handler.state = "";
 
         this.emit(":tell", "OK, come back soon.");
     },
@@ -286,7 +286,7 @@ var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
     "SessionEndedRequest": function () {
         printDebugInformation(this, "loseHandler:SessionEndedRequest");
 
-        this.handler.state = null;
+        this.handler.state = "";
 
         this.emit(":tell", "OK, come back soon.");
     },
