@@ -16,7 +16,7 @@ exports.handler = function (event, context, callback) {
     alexa = Alexa.handler(event, context);
     alexa.appId = "amzn1.ask.skill.1e0180c4-424d-498d-83f1-f952b1cb77e8";
     alexa.dynamoDBTableName = "TwentyQuestions";
-    alexa.registerHandlers(newSessionHandler, newGameHandler, guessHandler, clueHandler, winHandler, loseHandler);
+    alexa.registerHandlers(newSessionHandler, startModeHandler, newGameHandler, guessHandler, clueHandler, winHandler, loseHandler);
     alexa.execute();
 };
 
@@ -35,6 +35,15 @@ var newSessionHandler = {
             alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
         });
     },
+    "LaunchRequest": function () {
+        printDebugInformation(this, "newSessionHandler:LaunchRequest");
+
+        this.handler.state = states.NEWGAMEMODE;
+
+        downloadDatabase(function () {
+            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
+        });
+    },
     "Unhandled": function () {
         printDebugInformation(this, "newSessionHandler:Unhandled");
 
@@ -43,6 +52,15 @@ var newSessionHandler = {
 };
 
 var startModeHandler = Alexa.CreateStateHandler(states.STARTMODE, {
+    "NewSession": function () {
+        printDebugInformation(this, "startModeHandler:NewSession");
+
+        this.handler.state = states.NEWGAMEMODE;
+
+        downloadDatabase(function () {
+            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
+        });
+    },
     "LaunchRequest": function () {
         printDebugInformation(this, "startModeHandler:LaunchRequest");
 
@@ -55,7 +73,7 @@ var startModeHandler = Alexa.CreateStateHandler(states.STARTMODE, {
     "Unhandled": function () {
         printDebugInformation(this, "startModeHandler:Unhandled");
 
-        this.emit("LaunchRequest");
+        this.emit("NewSession");
     }
 });
 
