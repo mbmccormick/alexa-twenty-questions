@@ -112,7 +112,7 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
             if (this.attributes["READ_CLUES"].length < 20) {
                 this.handler.state = states.CLUEMODE;
 
-                this.emit(":ask", "No, that's not it. Choose a clue number between 1 and 20 to continue.", "Please choose a clue number between 1 and 20.");
+                this.emitWithState("LaunchRequest");
             } else {
                 this.handler.state = states.LOSEMODE;
 
@@ -161,42 +161,21 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
 });
 
 var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
-    "CLUE": function () {
-        printDebugInformation(this, "clueHandler:CLUE");
+    "LaunchRequest": function () {
+        printDebugInformation(this, "clueHandler:LaunchRequest");
 
-        var number = this.event.request.intent.slots.number.value;
+        var number = getRandomNumber(1, 20);
 
-        if (number >= 1 &&
-            number <= 20) {
-            if (find(this.attributes["READ_CLUES"], number) == false) {
-                this.attributes["READ_CLUES"].push(number);
-                this.attributes["CURRENT_CLUE"] = number;
-
-                this.handler.state = states.GUESSMODE;
-
-                this.emit(":ask", card.clues[number - 1] + " Take your guess.", "Please take your guess.");
-            } else {
-                this.emit(":ask", "You've already had this clue. Please choose a different clue number.", "Please choose a clue number between 1 and 20.");
-            }
-        } else {
-            this.emit(":ask", "Sorry, please choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
+        while (find(this.attributes["READ_CLUES"], number) != false) {
+            number = getRandomNumber(1, 20);
         }
-    },
-    "REPEAT": function () {
-        printDebugInformation(this, "clueHandler:REPEAT");
+        
+        this.attributes["READ_CLUES"].push(number);
+        this.attributes["CURRENT_CLUE"] = number;
 
-        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
-    },
-    "READALL": function () {
-        printDebugInformation(this, "clueHandler:READALL");
+        this.handler.state = states.GUESSMODE;
 
-        var message = "";
-
-        for (var clue in this.attributes["READ_CLUES"].sort(sortNumbers)) {
-            message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
-        }
-
-        this.emit(":ask", message + "Choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
+        this.emit(":ask", "No, that's not it. " + card.clues[number - 1] + " Take your guess.", "Please take your guess.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.HelpIntent");
@@ -218,7 +197,7 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
     "Unhandled": function () {
         printDebugInformation(this, "clueHandler:Unhandled");
 
-        this.emit(":ask", "Please choose a clue number between 1 and 20.", "Please choose a clue number between 1 and 20.");
+        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
     }
 });
 
@@ -353,7 +332,7 @@ function getRandomNumber(min, max) {
 
 function find(array, item) {
     for (var i = 0; i < array.length; i++) {
-        if (array[i].toLowerCase() === item.toLowerCase()) {
+        if (array[i].toString().toLowerCase() === item.toString().toLowerCase()) {
             return true;
         }
     }
