@@ -13,15 +13,6 @@
       "intent": "AMAZON.StopIntent"
     },
     {
-      "intent": "CLUE",
-      "slots": [
-        {
-          "name": "number",
-          "type": "AMAZON.NUMBER"
-        }
-      ]
-    },
-    {
       "intent": "REPEAT"
     },
     {
@@ -30,6 +21,10 @@
     {
       "intent": "GUESS",
       "slots": [
+        {
+          "name": "food",
+          "type": "AMAZON.Food"
+        },
         {
           "name": "person",
           "type": "AMAZON.Person"
