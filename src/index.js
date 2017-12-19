@@ -43,8 +43,8 @@ var newSessionHandler = {
 };
 
 var startModeHandler = Alexa.CreateStateHandler(states.STARTMODE, {
-    "NewSession": function () {
-        printDebugInformation(this, "startModeHandler:NewSession");
+    "LaunchRequest": function () {
+        printDebugInformation(this, "startModeHandler:LaunchRequest");
 
         this.handler.state = states.NEWGAMEMODE;
 
@@ -55,7 +55,7 @@ var startModeHandler = Alexa.CreateStateHandler(states.STARTMODE, {
     "Unhandled": function () {
         printDebugInformation(this, "startModeHandler:Unhandled");
 
-        this.emit("NewSession");
+        this.emit("LaunchRequest");
     }
 });
 
