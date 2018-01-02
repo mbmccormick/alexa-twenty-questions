@@ -334,5 +334,161 @@
             "Since I am so large, I have my own app.",
             "My lampposts tell a secret code, and will help you find your way through me."
         ]
+    },
+    {
+        "id": 12,
+        "type": "person",
+        "answers": [
+            "Edgar Allan Poe",
+            "Poe",
+            "Edgar Poe",
+            "Edgar A. Poe",
+            "E. A. Poe"
+        ],
+        "clues": [
+            "I was an American writer, editor, and literary critic.",
+            "I was born in 1809.",
+            "I am best known for his poetry and short stories.",
+            "My best known fiction works are Gothic.",
+            "Bird or beast upon the sculptured bust above his chamber door, With such name as Nevermore .",
+            "I published my first book when I was 18.",
+            "My first book was titled Tamerlane.",
+            "My spouse's name is Virginia Clemm.",
+            "The cause of my death is a mystery.",
+            "I am male.",
+            "You may know my work, The Raven.",
+            "I have a museum in Baltimore.",
+            "I was an important part of the American Romantic Movement.",
+            "The Baltimore Ravens are named after one of my famous works.",
+            "My short story, The Murders in the Rue Morgue, has been considered the first modern detective story.",
+            "I died when I was only 40.",
+            "I was pen friends with Charles Dickens.",
+            "I invited the term tintinnabulation to describe the sound made by the ringing of bells.",
+            "I was a cat lover.",
+            "Outside of literature, my favorite hobbies was space and cosmology."
+        ]
+    },
+    {
+        "id": 13,
+        "type": "person",
+        "answers": [
+            "The Beatles",
+            "Beatles"
+        ],
+        "clues": [
+            "I have won 7 Grammy Awards.",
+            "I was formed in Liverpool in 1960.",
+            "I am the best-selling band in history.",
+            "I have more number-one albums on the British charts and sold more singles in the UK than any other band.",
+            "I am the best-selling music artists in the United States.",
+            "I hold the record for most number-one hits on the Hot 100 chart with twenty.",
+            "One of my most well known songs is Hey Jude.",
+            "I am a band.",
+            "I have all male members.",
+            "You may recognize us by John, Paul, George, and Ringo.",
+            "At one point, I held the top 5 slots of the Billboard Hot 100.",
+            "The countries where I have had the most number one's include Australia, Germany, Holland, Sweden, Canada and Norway.",
+            "One of my band members grew up near a place called Strawberry Fields in Liverpool.",
+            "Our picture on Abbey Road is often recreated.",
+            "Our band was once called The Rainbows.",
+            "Rolling Stone crowned us as the best artists of all time.",
+            "I once bought an island together.",
+            "My song, I Want to Hold Your Hand, was the single that made the breakthrough for us in America.",
+            "Our dissolution was formalized in December 1974.",
+            "I was included in Time magazine's compilation of the twentieth century's 100 most influential people."
+        ]
+    },
+    {
+        "id": 14,
+        "type": "thing",
+        "answers": [
+            "flamingo",
+            "flamingos",
+            "flamingoes"
+        ],
+        "clues": [
+            "I am a type of bird.",
+            "I am traditionally long-legged.",
+            "Sometimes I prefer to stand on one leg.",
+            "I am very social, my group can have thousands in it.",
+            "You may know me by my vibrant color.",
+            "I change colors as I grow older.",
+            "There are only six species of me in the world.",
+            "I can be found around the world.",
+            "We have all male members.",
+            "Though I am a strong swimmer and flier, you'll most likely see me just wading.",
+            "I hold my  bills upside down while feeding.",
+            "I have a bent bill.",
+            "My legs can be up to 50 inches long.",
+            "You may think I have a backward bending knee, but that's just my ankle.",
+            "When I am a baby, I am grey or white.",
+            "I am pink.",
+            "I can have a wingspan of up to 65 inches.",
+            "I am the national bird of the Bahamas.",
+            "I am an Omnivores.",
+            "My group name is a colony."
+        ]
+    },
+    {
+        "id": 15,
+        "type": "person",
+        "answers": [
+            "Amelia Earhart",
+            "Amelia Mary Earhart",
+            "Earhart"
+        ],
+        "clues": [
+            "I am female.",
+            "I am an aviation pioneer and author.",
+            "I was the first female aviator to fly solo across the Atlantic Ocean.",
+            "I disappeared in July of 1937.",
+            "In 1935, I became a visiting faculty member at Purdue University as an advisor to aeronautical engineering and a career counselor to women students.",
+            "I was born in Atchison, Kansas.",
+            "During World War I, I became a nurse's aid in Toronto, Canada, to tend to wounded soldiers.",
+            "I named my first plane The Canary.",
+            "I was known as Lady Lindy.",
+            "I worked hard to promote opportunities for women in aviation.",
+            "My final navigator was Fred Noonan.",
+            "I published 16 articles in Cosmopolitan.",
+            "I earned an Air Force Distinguished Flying Cross.",
+            "My husband is George P. Putnam.",
+            "I am an American.",
+            "There is a building named after me at Purdue University.",
+            "I was born in Atchison, Kansas.",
+            "I am on a 1963 U.S. Postal stamp.",
+            "I was the first aviator to fly solo from Honolulu, Hawaii to Oakland, California.",
+            "After my disappearance, $4 million was spent on the air and sea search by the Navy and Coast Guard, which was the most costly and intensive in U.S. history up to that time."
+        ]
+    },
+    {
+        "id": 16,
+        "type": "person",
+        "answers": [
+            "Benjamin Franklin",
+            "Ben Franklin"
+        ],
+        "clues": [
+            "I am male.",
+            "I was born in 1706.",
+            "My father was a soap maker whose name was Josiah.",
+            "I had an illegitimate son named William.",
+            "I am also known as William Saunders.",
+            "I invented bifocal glasses, swim fins, and the glass armonica.",
+            "I have honorary degrees from Harvard, Yale, and Oxford.",
+            "I am American.",
+            "I work in ink.",
+            "I frequently play chess.",
+            "I served as postmaster of Philadelphia.",
+            "I spent a lot of time in France.",
+            "My face is associated with money.",
+            "I am also known as Silence Dogood.",
+            "I am a Founding Father.",
+            "I like kites.",
+            "My brother was thrown in jail for his views, and left me to run his business.",
+            "I am a free mason.",
+            "I am a scientist.",
+            "I signed the Declaration of Independence"
+        ]
     }
+
 ]
