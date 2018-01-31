@@ -489,6 +489,64 @@
             "I am a scientist.",
             "I signed the Declaration of Independence"
         ]
+    },
+    {
+        "id": 17,
+        "type": "place",
+        "answers": [
+            "St. Louis",
+            "Saint Louis"
+        ],
+        "clues": [
+            "Some call me a gateway.",
+            "I was once called home by Ulysses S. Grant, Tina Turner, and Charles Lindbergh.",
+            "General William Tecumseh Sherman is buried here.",
+            "I am home to the Museum of Westward Expansion.",
+            "I was founded in 1764.",
+            "I was part of the Louisiana Purchase.",
+            "One of my founders was Pierre Laclede.",
+            "I am a port.",
+            "I hosted the 1904 World's Fair.",
+            "I am home to the tallest man-made monument in the Western Hemisphere.",
+            "The Dred Scott Decision took place in my courthouse.",
+            "I am 66 square miles.",
+            "My summers are hot and humid.",
+            "I am home to Washington University.",
+            "My hockey team has never won the Stanley Cup.",
+            "My baseball team once had a player known as the Wizard of Oz.",
+            "I am known for my arch.",
+            "I am on the banks of the 4th longest river in the world.",
+            "Transportation to me was once quite steamy.",
+            "I am home to the nation's second oldest symphony."
+        ]
+    },
+    {
+        "id": 18,
+        "type": "thing",
+        "answers": [
+            "Igloo"
+        ],
+        "clues": [
+            "I am cool.",
+            "Some call me home.",
+            "I am shaped like a dome.",
+            "I am used by natives.",
+            "I am an Inuit word.",
+            "I was invented centuries ago.",
+            "I can't abide the heat.",
+            "I must be built up.",
+            "Chilly Willy knows me.",
+            "I am white.",
+            "I cannot survive in Miami.",
+            "Children like me.",
+            "I am an insulator.",
+            "I am usually temporary.",
+            "Hunters and fishermen use me.",
+            "I am built of blocks in a spiral.",
+            "I've seen the Northern Lights many times.",
+            "I am made of just one material.",
+            "I can sometimes accommodate up to 20 people.",
+            "I'm not just for kids."
+        ]
     }
-
 ]
