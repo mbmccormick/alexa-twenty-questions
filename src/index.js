@@ -29,25 +29,27 @@ var newSessionHandler = {
     "NewSession": function () {
         printDebugInformation(this, "newSessionHandler:NewSession");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        downloadDatabase(function () {
-            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
-        });
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
     "LaunchRequest": function () {
         printDebugInformation(this, "newSessionHandler:LaunchRequest");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        downloadDatabase(function () {
-            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
-        });
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
     "Unhandled": function () {
         printDebugInformation(this, "newSessionHandler:Unhandled");
 
-        this.emit("NewSession");
+        var _alexa = this;
+
+        _alexa.emit("NewSession");
     }
 };
 
@@ -55,25 +57,27 @@ var startModeHandler = Alexa.CreateStateHandler(states.STARTMODE, {
     "NewSession": function () {
         printDebugInformation(this, "startModeHandler:NewSession");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        downloadDatabase(function () {
-            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
-        });
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
     "LaunchRequest": function () {
         printDebugInformation(this, "startModeHandler:LaunchRequest");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        downloadDatabase(function () {
-            alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
-        });
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        alexa.emit(":ask", "Welcome to Twenty Questions! Are you ready to play?", "Are you ready to play?");
     },
     "Unhandled": function () {
         printDebugInformation(this, "startModeHandler:Unhandled");
 
-        this.emit("NewSession");
+        var _alexa = this;
+
+        _alexa.emit("NewSession");
     }
 });
 
@@ -81,49 +85,63 @@ var newGameHandler = Alexa.CreateStateHandler(states.NEWGAMEMODE, {
     "AMAZON.YesIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.YesIntent");
 
-        var index = getRandomNumber(1, database.length);
-        card = database[index - 1];
-        
-        this.attributes["CARD_ID"] = card.id;
-        this.attributes["READ_CLUES"] = [];
-        this.attributes["CURRENT_CLUE"] = null;
+        var _alexa = this;
 
-        printDebugInformation(this, "Randomly selected card " + card.id + " for this game.");
+        restoreSession(this, function () {
+            var index = getRandomNumber(1, database.length);
+            card = database[index - 1];
 
-        this.handler.state = states.GUESSMODE;
+            _alexa.attributes["CARD_ID"] = card.id;
+            _alexa.attributes["READ_CLUES"] = [];
+            _alexa.attributes["CURRENT_CLUE"] = null;
 
-        this.emit(":ask", "OK, let's begin. I am a " + card.type + ". Take your first guess.", "Please take your first guess.");
+            printDebugInformation(_alexa, "Randomly selected card " + card.id + " for this game.");
+
+            _alexa.handler.state = states.GUESSMODE;
+
+            _alexa.emit(":ask", "OK, let's begin. I am a " + card.type + ". Take your first guess.", "Please take your first guess.");
+        });
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.NoIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.HelpIntent");
 
-        this.emitWithState("Unhandled");
+        var _alexa = this;
+
+        _alexa.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "newGameHandler:AMAZON.StopIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "newGameHandler:SessionEndedRequest");
 
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
         printDebugInformation(this, "newGameHandler:Unhandled");
 
-        this.emit(":ask", "You can say yes to begin the game or no to quit.", "You can say yes to begin the game or no to quit.");
+        var _alexa = this;
+
+        _alexa.emit(":ask", "You can say yes to begin the game or no to quit.", "You can say yes to begin the game or no to quit.");
     }
 });
 
@@ -131,76 +149,96 @@ var guessHandler = Alexa.CreateStateHandler(states.GUESSMODE, {
     "GUESS": function () {
         printDebugInformation(this, "guessHandler:GUESS");
 
-        var slots = this.event.request.intent.slots;
+        var _alexa = this;
 
-        var isCorrect = false;
-        for (var slot in slots) {
-            if (slots.hasOwnProperty(slot)) {
-                if (slots[slot].value) {
-                    var guess = slots[slot].value;
+        restoreSession(this, function () {
+            var slots = _alexa.event.request.intent.slots;
 
-                    if (find(card.answers, guess)) {
-                        isCorrect = true;
+            var isCorrect = false;
+            for (var slot in slots) {
+                if (slots.hasOwnProperty(slot)) {
+                    if (slots[slot].value) {
+                        var guess = slots[slot].value;
+
+                        if (find(card.answers, guess)) {
+                            isCorrect = true;
+                        }
                     }
                 }
             }
-        }
 
-        if (isCorrect) {
-            this.handler.state = states.WINMODE;
+            if (isCorrect) {
+                _alexa.handler.state = states.WINMODE;
 
-            this.emitWithState("LaunchRequest");
-        } else {
-            if (this.attributes["READ_CLUES"].length < 20) {
-                this.handler.state = states.CLUEMODE;
-
-                this.emitWithState("LaunchRequest");
+                _alexa.emitWithState("LaunchRequest");
             } else {
-                this.handler.state = states.LOSEMODE;
+                if (_alexa.attributes["READ_CLUES"].length < 20) {
+                    _alexa.handler.state = states.CLUEMODE;
 
-                this.emitWithState("LaunchRequest");
+                    _alexa.emitWithState("LaunchRequest");
+                } else {
+                    _alexa.handler.state = states.LOSEMODE;
+
+                    _alexa.emitWithState("LaunchRequest");
+                }
             }
-        }
+        });
     },
     "REPEAT": function () {
         printDebugInformation(this, "guessHandler:REPEAT");
 
-        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+        var _alexa = this;
+
+        restoreSession(this, function () {
+            _alexa.emit(":ask", "Your last clue was: " + card.clues[_alexa.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+        });
     },
     "READALL": function () {
         printDebugInformation(this, "guessHandler:READALL");
 
-        var message = "";
+        var _alexa = this;
 
-        for (var clue in this.attributes["READ_CLUES"].sort(sortNumbers)) {
-            message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
-        }
+        restoreSession(this, function () {
+            var message = "";
 
-        this.emit(":ask", message + "Take your guess.", "Please take your guess.");
+            for (var clue in _alexa.attributes["READ_CLUES"].sort(sortNumbers)) {
+                message += "Clue number " + clue + ": " + card.clues[clue - 1] + " ";
+            }
+
+            _alexa.emit(":ask", message + "Take your guess.", "Please take your guess.");
+        });
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "guessHandler:AMAZON.HelpIntent");
 
-        this.emitWithState("Unhandled");
+        var _alexa = this;
+
+        _alexa.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "guessHandler:AMAZON.StopIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "guessHandler:SessionEndedRequest");
 
-        this.handler.state = states.STARTMODE;
+        var _alexa = this;
 
-        this.emit(":tell", "OK, come back soon.");
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
         printDebugInformation(this, "guessHandler:Unhandled");
 
-        this.emit(":ask", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.");
+        var _alexa = this;
+
+        _alexa.emit(":ask", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.", "You can say repeat that to repeat the last clue or read all clues to read all of your clues.");
     }
 });
 
@@ -208,42 +246,58 @@ var clueHandler = Alexa.CreateStateHandler(states.CLUEMODE, {
     "LaunchRequest": function () {
         printDebugInformation(this, "clueHandler:LaunchRequest");
 
-        var number = getRandomNumber(1, 20);
+        var _alexa = this;
 
-        while (find(this.attributes["READ_CLUES"], number) != false) {
-            number = getRandomNumber(1, 20);
-        }
-        
-        this.attributes["READ_CLUES"].push(number);
-        this.attributes["CURRENT_CLUE"] = number;
+        restoreSession(this, function () {
 
-        this.handler.state = states.GUESSMODE;
+            var number = getRandomNumber(1, 20);
 
-        this.emit(":ask", "No, that's not it. " + card.clues[number - 1] + " Take your guess.", "Please take your guess.");
+            while (find(_alexa.attributes["READ_CLUES"], number) != false) {
+                number = getRandomNumber(1, 20);
+            }
+
+            _alexa.attributes["READ_CLUES"].push(number);
+            _alexa.attributes["CURRENT_CLUE"] = number;
+
+            _alexa.handler.state = states.GUESSMODE;
+
+            _alexa.emit(":ask", "No, that's not it. " + card.clues[number - 1] + " Take your guess.", "Please take your guess.");
+        });
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.HelpIntent");
 
-        this.emitWithState("Unhandled");
+        var _alexa = this;
+
+        _alexa.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "clueHandler:AMAZON.StopIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "clueHandler:SessionEndedRequest");
 
-        this.handler.state = states.STARTMODE;
+        var _alexa = this;
 
-        this.emit(":tell", "OK, come back soon.");
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
         printDebugInformation(this, "clueHandler:Unhandled");
 
-        this.emit(":ask", "Your last clue was: " + card.clues[this.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+        var _alexa = this;
+
+        restoreSession(this, function () {
+
+            _alexa.emit(":ask", "Your last clue was: " + card.clues[_alexa.attributes["CURRENT_CLUE"] - 1] + " Take your guess.", "Please take your guess.");
+        });
     }
 });
 
@@ -251,53 +305,70 @@ var winHandler = Alexa.CreateStateHandler(states.WINMODE, {
     "LaunchRequest": function () {
         printDebugInformation(this, "winHandler:LaunchRequest");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        var score = 20 - this.attributes["READ_CLUES"].length;
+        restoreSession(this, function () {
 
-        if (score > 1) {
-            this.emit(":ask", "Yes, that's right! I am " + card.answers[0] + ". You scored " + score + " points. Would you like to play again?", "Would you like to start a new game?");
-        } else {
-            this.emit(":ask", "Yes, that's right! I am " + card.answers[0] + ". You scored " + score + " point. Would you like to play again?", "Would you like to start a new game?");
-        }
+            _alexa.handler.state = states.NEWGAMEMODE;
+
+            var score = 20 - _alexa.attributes["READ_CLUES"].length;
+
+            if (score > 1) {
+                _alexa.emit(":ask", "Yes, that's right! I am " + card.answers[0] + ". You scored " + score + " points. Would you like to play again?", "Would you like to start a new game?");
+            } else {
+                _alexa.emit(":ask", "Yes, that's right! I am " + card.answers[0] + ". You scored " + score + " point. Would you like to play again?", "Would you like to start a new game?");
+            }
+        });
     },
     "AMAZON.YesIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.YesIntent");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        this.emitWithState("LaunchRequest");
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        _alexa.emitWithState("LaunchRequest");
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.NoIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.HelpIntent");
 
-        this.emitWithState("Unhandled");
+        var _alexa = this;
+
+        _alexa.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "winHandler:AMAZON.StopIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "winHandler:SessionEndedRequest");
 
-        this.handler.state = states.STARTMODE;
+        var _alexa = this;
 
-        this.emit(":tell", "OK, come back soon.");
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
         printDebugInformation(this, "winHandler:Unhandled");
 
-        this.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
+        var _alexa = this;
+
+        _alexa.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
     }
 });
 
@@ -305,47 +376,63 @@ var loseHandler = Alexa.CreateStateHandler(states.LOSEMODE, {
     "LaunchRequest": function () {
         printDebugInformation(this, "loseHandler:LaunchRequest");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        this.emit(":ask", "Sorry, that's still not right. Game over. I am " + card.answers[0] + ". Would you like to play again?", "Would you like to start a new game?");
+        restoreSession(this, function () {
+            _alexa.handler.state = states.NEWGAMEMODE;
+
+            _alexa.emit(":ask", "Sorry, that's still not right. Game over. I am " + card.answers[0] + ". Would you like to play again?", "Would you like to start a new game?");
+        });
     },
     "AMAZON.YesIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.YesIntent");
 
-        this.handler.state = states.NEWGAMEMODE;
+        var _alexa = this;
 
-        this.emitWithState("LaunchRequest");
+        _alexa.handler.state = states.NEWGAMEMODE;
+
+        _alexa.emitWithState("LaunchRequest");
     },
     "AMAZON.NoIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.NoIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "AMAZON.HelpIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.HelpIntent");
 
-        this.emitWithState("Unhandled");
+        var _alexa = this;
+
+        _alexa.emitWithState("Unhandled");
     },
     "AMAZON.StopIntent": function () {
         printDebugInformation(this, "loseHandler:AMAZON.StopIntent");
-        
-        this.handler.state = states.STARTMODE;
-        
-        this.emit(":tell", "OK, come back soon.");
+
+        var _alexa = this;
+
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "SessionEndedRequest": function () {
         printDebugInformation(this, "loseHandler:SessionEndedRequest");
 
-        this.handler.state = states.STARTMODE;
+        var _alexa = this;
 
-        this.emit(":tell", "OK, come back soon.");
+        _alexa.handler.state = states.STARTMODE;
+
+        _alexa.emit(":tell", "OK, come back soon.");
     },
     "Unhandled": function () {
         printDebugInformation(this, "loseHandler:Unhandled");
 
-        this.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
+        var _alexa = this;
+
+        _alexa.emit(":ask", "You can say yes to start a new game or no to quit.", "You can say yes to start a new game or no to quit.");
     }
 });
 
@@ -366,6 +453,27 @@ function printDebugInformation(context, name) {
                 }
             }
         }
+    }
+}
+
+function restoreSession(context, callback) {
+    printDebugInformation(context, "Restoring session...");
+
+    if (database == null) {
+        downloadDatabase(function () {
+            if (context.attributes["CARD_ID"]) {
+                card = database[context.attributes["CARD_ID"] - 1];
+            }
+
+            callback();
+        });
+    }
+    else {
+        if (context.attributes["CARD_ID"]) {
+            card = database[context.attributes["CARD_ID"] - 1];
+        }
+
+        callback();
     }
 }
 
@@ -394,6 +502,6 @@ function find(array, item) {
     return false;
 }
 
-function sortNumbers(a,b ) {
+function sortNumbers(a, b) {
     return a - b;
 }
