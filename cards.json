@@ -219,13 +219,14 @@
         "answers": [
             "Denzel Washington",
             "Denzel Hayes Washington",
-            "Denzel Hayes Washington, Jr.",
-            "Denzel H. Washington, Jr.",
+            "Denzel Hayes Washington, Junior.",
+            "Denzel Washington, Junior.",
+            "Denzel H. Washington, Junior.",
             "Denzel H. Washington"
         ],
         "clues": [
             "My middle name is Hayes.",
-            "Junior follows my name.",
+            "Technically, Junior follows my name.",
             "I have received three Golden Globe awards.",
             "I've won two Academy Awards.",
             "I am 6 feet, 1 inch tall.",
@@ -524,7 +525,8 @@
         "id": 18,
         "type": "thing",
         "answers": [
-            "Igloo"
+            "Igloo",
+            "An igloo"
         ],
         "clues": [
             "I am cool.",
