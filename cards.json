@@ -550,5 +550,67 @@
             "I can sometimes accommodate up to 20 people.",
             "I'm not just for kids."
         ]
+    },
+    {
+        "id": 19,
+        "type": "thing",
+        "answers": [
+            "fire truck",
+            "a fire truck",
+            "fire trucks",
+            "fire engine"
+        ],
+        "clues": [
+            "I am sometimes loud.",
+            "I am usually red, though you may see me in yellow.",
+            "I carry water.",
+            "I help people.",
+            "I often come with a ladder.",
+            "The earliest version of me was from Ancient Greece.",
+            "I have a loud siren.",
+            "I go where the fire is.",
+            "I can hold up to 1000 gallons of water.",
+            "Sometimes I have two drivers.",
+            "Dalmatians are my favorite dogs.",
+            "I used to be pulled by horses.",
+            "I come in three different varieties: pumper, tanker, and ladder.",
+            "I sleep in a large garage.",
+            "When there is no emergency, you may see me in a parade.",
+            "If you see my flashing lights, move out of the way!",
+            "I am large.",
+            "I am a vehicle.",
+            "Sometimes I have two drivers.",
+            "I come with firefighters."
+        ]
+    },
+    {
+        "id": 20,
+        "type": "person",
+        "answers": [
+            "Abraham Lincoln",
+            "Abe Lincoln"
+        ],
+        "clues": [
+            "I was born in 1809.",
+            "I was an American statesman and lawyer.",
+            "I am male.",
+            "I served as the 16th President of the United States.",
+            "I paved the way for the abolition of slavery.",
+            "I was succeeded in office by Andrew Johnson.",
+            "I was assassinated.",
+            "I lived in a log cabin.",
+            "I am laid to rest in Springfield, Illinois.",
+            "I am often depicted wearing a top hat.",
+            "John Wilkes Booth is no friend of mine.",
+            "I was killed while attending a play at Ford's Theatre.",
+            "You can see my face at Mount Rushmore.",
+            "I have a library in Springfield, Illinois.",
+            "I was the first president from the Republican Party",
+            "I led the United States through the Civil War.",
+            "I am mostly self-educated.",
+            "I am ranked among the greatest U.S. presidents.",
+            "I served in the military for 3 months.",
+            "My wife's name is Mary Todd."
+        ]
     }
 ]
