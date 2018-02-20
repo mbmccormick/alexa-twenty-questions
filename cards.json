@@ -612,5 +612,35 @@
             "I served in the military for 3 months.",
             "My wife's name is Mary Todd."
         ]
+    },
+    {
+        "id": 21,
+        "type": "thing",
+        "answers": [
+            "potato"
+            "potatoes"
+        ],
+        "clues": [
+            "I am a food.",
+            "Some people love me.",
+            "I can be harvested.",
+            "Sometimes I'm found on a couch.",
+            "I was introduced to Europe in the 16th century.",
+            "My name has a Spanish origin.",
+            "There are more than 1000 different types of me.",
+            "I originated in South America.",
+            "When you were a child, you may have played with a plastic replica of me.",
+            "I am 79% water.",
+            "I can be found under golden arches.",
+            "I am used to brew vodka.",
+            "I can be prepared in many ways.",
+            "I was NOT part of the first Thanksgiving",
+            "Thomas Jefferson introduced me to the White House.",
+            "I am a member of the nightshade family.",
+            "I am the second most consumed food in the United States.",
+            "I have lots of nicknames.",
+            "I am 99.9% fat free.",
+            "I am a good source of Vitamin C."
+        ]
     }
 ]
