@@ -642,5 +642,63 @@
             "I am 99.9% fat free.",
             "I am a good source of Vitamin C."
         ]
+    },
+    {
+        "id": 22,
+        "type": "thing",
+        "answers": [
+            "corn"
+        ],
+        "clues": [
+            "I was domesticated by indigenous people.",
+            "I can be eaten.",
+            "I am a fuel source.",
+            "I can be sweet.",
+            "I should be knee high by the 4th of July.",
+            "Sometimes I'm a decoration.",
+            "Heat sometimes makes me explode.",
+            "I can be dried.",
+            "My ears are inspected.",
+            "I am a member of the grass family.",
+            "I am often covered with silk.",
+            "I can be blackish, bluish-gray, purple, green, red, white, and yellow.",
+            "I was once used as money.",
+            "I can be candy or a belt.",
+            "I am the number one crop in America.",
+            "I am produced on every continent except Antarctica.",
+            "Parts of me can be used to make a pipe.",
+            "I was domesticated about 10,000 years ago.",
+            "I am often amazing.",
+            "I am one of the Three Sisters."
+        ]
+    },
+    {
+        "id": 23,
+        "type": "place",
+        "answers": [
+            "Lake Superior"
+        ],
+        "clues": [
+            "It's been said that I never give up my dead.",
+            "I am chilly.",
+            "I am 31,700 square miles.",
+            "I was once covered by 1.25 miles of ice.",
+            "I was discovered by people about 10,000 years ago.",
+            "I am close to amethyst mines.",
+            "I am pretty deep.",
+            "My basin is home to 58 orchid species.",
+            "The Ojibwe call me Gitchi-Gami.",
+            "I touch 3 states.",
+            "Copper, silver, gold, iron, and nickel were mined near me.",
+            "Henry Wadsworth Longfellow wrote about me.",
+            "I am in North America.",
+            "I am home to 88 species of fish.",
+            "I am considered glacial.",
+            "I am about the size of South Carolina.",
+            "I am shared by 2 countries.",
+            "I am home to over 400 islands.",
+            "Gordon Lightfoot sang about me.",
+            "I am Great."
+        ]
     }
 ]
