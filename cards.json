@@ -700,5 +700,34 @@
             "Gordon Lightfoot sang about me.",
             "I am Great."
         ]
+    },
+    {
+        "id": 24,
+        "type": "person",
+        "answers": [
+            "Warren Buffett"
+        ],
+        "clues": [
+            "I am male.",
+            "My middle name is Edward.",
+            "I was born in Nebraska.",
+            "I was once the richest person in the world.",
+            "My father was a United States congressman.",
+            "I first filed taxes at age 13.",
+            "I have 3 children.",
+            "I still live in the home I purchased in 1958 for $31,500.",
+            "I'm known as an Oracle.",
+            "I am an American.",
+            "I am not a fan of President Trump.",
+            "I graduated from Woodrow Wilson High School in 1947.",
+            "I used to sell chewing gum, golf balls, and stamps.",
+            "I attended but did not graduate from the Wharton School of the University of Pennsylvania.",
+            "I took a Dale Carnegie public speaking class.",
+            "I am a philanthropist.",
+            "I play the ukulele.",
+            "I sometimes play bridge with Bill Gates.",
+            "I carry a flip phone.",
+            "My life's work was very influenced by a book I checked out of the library at age 7."
+        ]
     }
 ]
