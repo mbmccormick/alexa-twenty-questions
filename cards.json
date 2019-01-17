@@ -7,7 +7,8 @@
             "Donald J. Trump",
             "Donald Jay Trump",
             "Donald John Trump",
-            "Trump"
+            "Trump",
+            "President Trump"
         ],
         "clues": [
             "I was the 45th president of the United States.",
@@ -729,5 +730,35 @@
             "I carry a flip phone.",
             "My life's work was very influenced by a book I checked out of the library at age 7."
         ]
+    },
+	{
+        "id": 25,​
+        "type": "place",​
+        "answers": [​
+            "Buckingham Palace",​
+            "Buckingham House"​
+        ],​
+        "clues": [​
+            "I am located in London.",​
+            "I am located in the City of Westminster.",​
+            "Part of me was built way back in 1703.",​
+            "I am the residence and administrative headquarters of the monarch of the United Kingdom.",​
+            "I've been known to be called The Queen's House",​
+            "I am a popular tourist attraction.",​
+            "My chapel was destroyed by a German bomb during World War Two.",​
+            "I was originally built as a townhouse for the Duke of Buckingham.",​
+            "I became the principal royal residence in 1837.",​
+            "I am a building.",​
+            "You may find guards at my doors.",​
+            "The Changing of the Guard ceremony takes place in my forecourt.",​
+            "I am owned by the reigning monarch in right of the Crown.",​
+            "I am the workplace for more than 800 people.",​
+            "You'll sometimes find The Queen behind my doors.",​
+            "I fly a different flag on my building, if The Queen is here.",​
+            "Every year, 50,000 guests are invited to attend parties, receptions, and banquets at me.",​
+            "I have a large private garden that only a few have seen.",​
+            "My private garden is 42 acres.",​
+            "I have 78 bathrooms."​
+        ]​
     }
 ]
