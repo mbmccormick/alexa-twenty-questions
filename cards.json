@@ -760,5 +760,35 @@
             "My private garden is 42 acres.",
             "I have 78 bathrooms."
         ]
+    },
+    {
+        "id": 26,
+        "type": "thing",
+        "answers": [
+            "Mars",
+            "Planet Mars"
+        ],
+        "clues": [
+            "I am the fourth planet from the sun.",
+            "I am the last of the terrestrial planets.",
+            "I am named after a mythological figure.",
+            "I am brownish-red.",
+            "I am the second smallest planet in the Solar System.",
+            "I am home to the largest volcano in the Solar System.",
+            "I may be home to humans one day.",
+            "Elon Musk is quite fond of me.",
+            "Only 18 missions to me have been successful.",
+            "I am known for my dust storms.",
+            "I am named after the Roman god of war.",
+            "I have two moons.",
+            "Phobos and Deimons are my friends.",
+            "The first mission to visit me was launched in 1960.",
+            "I am 142 million miles from the sun.",
+            "Where I am from, days are 24 hours and 37 minutes.",
+            "I am half the size of Earth.",
+            "It takes me 687 days to orbit the sun.",
+            "My atmosphere is 96% carbon dioxide.",
+            "There have been many movies about me."
+        ]
     }
 ]
